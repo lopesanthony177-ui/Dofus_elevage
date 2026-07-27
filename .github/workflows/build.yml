@@ -24,29 +24,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Dofus-Elevage-APK
-          path: ${{ steps.buildozer.outputs.filename }}name: Build Android APK
-
-on:
-  push:
-    branches: [ main, master ]
-  workflow_dispatch:
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Build with Buildozer (Action Officielle Kivy)
-        uses: kivy/buildozer-action@v1
-        with:
-          save-buildozer-cache: true
-          cache-key: ${{ runner.os }}-buildozer-${{ hashFiles('buildozer.spec') }}
-
-      - name: Upload APK Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: Dofus-Elevage-APK
-          path: bin/*.apk
+          path: ${{ steps.buildozer.outputs.filename }}
